@@ -93,6 +93,8 @@ void Asientos::continuarPago()  // Método para continuar con el proceso de pago
         }
     }
 
+
+
     // Recolectar otros datos relevantes
     QString metodo = "Tarjeta";  // Ejemplo de método de pago (puede ser cambiado)
     float monto = 100.0f;        // Monto total (puedes calcularlo según las entradas seleccionadas)
@@ -101,7 +103,12 @@ void Asientos::continuarPago()  // Método para continuar con el proceso de pago
     // Pasar los datos al diálogo de Pago
     Pago dialog(metodo, monto, fecha, this);  // Crea un objeto de la clase 'Pago'
     dialog.setAsientos(asientosSeleccionados.join(", "));  // Envía los asientos seleccionados al diálogo de pago
-    dialog.exec();  // Ejecuta el diálogo de pago
+    if(asientosSeleccionados.empty()){
+        QMessageBox::warning(this, "Error", "Elija un asiento disponible por favor.");
+    } else {
+        dialog.exec();  // Ejecuta el diálogo de pago
+    }
+
 }
 
 QStringList Asientos::getAsientosSeleccionados() const
@@ -120,6 +127,7 @@ void Asientos::initstylesheet()  // Método para inicializar el estilo de la int
 
 void Asientos::marcarAsientosOcupados()  // Método para marcar los asientos ocupados
 {
+
     // Recorrer todos los botones de la lista
     for (int i = 0; i < botonesAsientos.size(); ++i)
     {  // Itera sobre todos los asientos
@@ -136,6 +144,7 @@ void Asientos::marcarAsientosOcupados()  // Método para marcar los asientos ocu
             botonesAsientos[i]->setEnabled(true);  // Activa el botón (puede ser seleccionado)
         }
     }
+
 }
 
 void Asientos::setLimiteAsientos(int limite)
@@ -165,6 +174,7 @@ void Asientos::seleccionarAsiento()
         {  // Si se excede el límite
             // Desmarcar el último asiento seleccionado
             boton->setChecked(false);
+            boton->setStyleSheet("background-color: green; color: white;");
             seleccionados--;  // Decrementa el contador
             QMessageBox::warning(this, "Límite alcanzado",  // Muestra un mensaje de advertencia
                                  "No puedes seleccionar más asientos que los indicados.");

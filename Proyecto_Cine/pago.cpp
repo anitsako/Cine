@@ -75,6 +75,8 @@ void Pago::setFecha(QString fecha)
 // Al ser llamado, se cierra el diálogo y marca el estado como "aceptado"
 bool Pago::finalizarCompra()
 {
+
+   // asientos.marcarAsientosOcupados();
     this->accept();  // Cierra el diálogo y devuelve QDialog::Accepted
     return true;     // Indica que la compra se ha finalizado correctamente
 }

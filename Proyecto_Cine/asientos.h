@@ -32,6 +32,8 @@ public:
 
     void setLimiteAsientos(int limite); //Metodo para establecer el limite de asientos seleccionables
 
+    void marcarAsientosOcupados(); //Metodo para inicializar y marcar los asientos ocupados en la interfaz
+
 private slots:
     void continuarPago(); //Slot para manejar la acción de continuar al pago
 
@@ -54,7 +56,6 @@ private:
 
     QStringList asientosSeleccionados; //Lista de cadenas que representan los asientos seleccionados por el usuario
 
-    void marcarAsientosOcupados(); //Metodo para inicializar y marcar los asientos ocupados en la interfaz
 
     void guardarAsientosOcupados(); //Metodo para guardar los asientos ocupados en un archivo
 

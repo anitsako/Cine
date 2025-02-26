@@ -2,7 +2,7 @@
 #define PAGO_H //Define PAGO_H para evitar múltiples inclusiones del archivo
 
 #include <QDialog> //Incluimos la biblioteca QDialog para crear y manejar cuadros de dialogo
-
+#include "asientos.h"
 #include <QFile> //Incluimos la biblioteca para manejar archivos en Qt
 
 
@@ -42,6 +42,7 @@ private:
     QString Metodo; //Variable para almacenar el método de pago
     double Monto; //Variable para almacenar el monto del pago
     QString Fecha; //Variable para almacenar la fecha del pago
+    Asientos asientos;
 
     QString AsientosSeleccionados; //Variable para almacenar los asientos seleccionados
 };
